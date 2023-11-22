@@ -1,0 +1,49 @@
+// Working HTML but again, no buttons:
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forecasted Bills for <?= currentMonth ?></title>
+  <style>
+    /* Your CSS styles */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="controls">
+      <label for="sortCriteria">Sort by:</label>
+      <select id="sortCriteria" onchange="sortData()">
+        <option value="amount">Amount</option>
+        <option value="date">Date</option>
+        <option value="category">Category</option>
+      </select>
+    </div>
+
+    <div class="total">
+      <div>Total Forecasted Amount:</div>
+      <span class="amount">
+        $<?= totalAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") ?>
+      </span>
+    </div>
+
+    <hr>
+
+    <div id="bill-items">
+      <? for (var i = 0; i < dataForCurrentMonth.length; i++) { ?>
+        <div class="item">
+          <div><b>Bill Name: <?= dataForCurrentMonth[i][0] ?></b></div>
+          <div>Category: <?= dataForCurrentMonth[i][4] ?></div>
+          <div>Amount: <span class="amount">$<?= dataForCurrentMonth[i][3].toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") ?></span></div>
+          <div>Date: <?= Utilities.formatDate(new Date(dataForCurrentMonth[i][5]), Session.getScriptTimeZone(), "MM/dd/yyyy") ?></div>
+          <div>Responsible: <?= dataForCurrentMonth[i][2] ?></div>
+        </div>
+        <hr>
+      <? } ?>
+    </div>
+  </div>
+
+  <script>
+    // Your JavaScript code for sorting and other functionalities
+  </script>
+</body>
+</html>
