@@ -1,4 +1,4 @@
-// Working HTML but again, no buttons:
+// Working HTML:
 
 <!DOCTYPE html>
 <html>
@@ -42,8 +42,12 @@
     </div>
   </div>
 
-  <script>
-    // Your JavaScript code for sorting and other functionalities
-  </script>
+<script>
+  function openSidebar() {
+    google.script.run.withSuccessHandler(function(ui) {
+      ui.showSidebar(sidebar);
+    }).openSidebar();
+  }
+</script>
 </body>
 </html>
